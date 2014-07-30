@@ -4,6 +4,12 @@
 ## decide if wordlist is virtually geometric
 ## wordi is a string where a-z represent generators of free group and A-Z their inverses
 
+## examples:
+## $ ./vg.py a aabAAAB
+## True
+## $ ./vg.py aabbccacb
+## False
+
 import freegroup
 import virtuallygeometric
 import sys

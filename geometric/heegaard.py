@@ -31,7 +31,7 @@ import pexpect, re
 # If the 'heegaard' binary is not in your path, edit the below to
 # reflect it's full location, e.g. "/Users/dunfield/work/heegaard/heegaard"
 
-heegaard_program = "/Users/dunfield/work/heegaard/heegaard"
+heegaard_program = "/Users/chris/Research/Software/heegaard/heegaard"
 
 def start_heegaard(relations):
     H = pexpect.spawn(heegaard_program)

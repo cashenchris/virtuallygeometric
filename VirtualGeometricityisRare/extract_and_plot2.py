@@ -26,13 +26,18 @@ def extractgvgdata(filename):
     f=open(filename)
     lines = list(f)
     f.close()
-    data = []
+    datadict=dict()
     for line in lines:
         sline=line.split()
         if len(sline)==4:
             intline=[int(entry) for entry in sline]
-            data.append(intline)
-
+            try:
+                datadict[intline[0]][0]+=intline[1]
+                datadict[intline[0]][1]+=intline[2]
+                datadict[intline[0]][2]+=intline[3]
+            except KeyError:
+                datadict[intline[0]]=[intline[1],intline[2],intline[3]]
+    data=[[k]+datadict[k] for k in datadict.keys()]
     lengths = [line[0] for line in data]
     g_file = [line[1] for line in data]
     vg_file = [line[2] for line in data]
@@ -51,13 +56,17 @@ def extractfullworddata(filename):
     f=open(filename)
     lines = list(f)
     f.close()
-    data = []
+    datadict=dict()
     for line in lines:
         sline=line.split()
         if len(sline)==3:
             intline=[int(entry) for entry in sline]
-            data.append(intline)
-
+            try:
+                datadict[intline[0]][0]+=intline[1]
+                datadict[intline[0]][1]+=intline[2]
+            except KeyError:
+                datadict[intline[0]]=[intline[1],intline[2]]
+    data=[[k]+datadict[k] for k in datadict.keys()]
     lengths = [line[0] for line in data]
     full_file = [line[1] for line in data]
     notfull_file = [line[2] for line in data]

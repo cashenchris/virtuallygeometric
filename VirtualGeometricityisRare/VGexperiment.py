@@ -28,8 +28,8 @@ except:
 
 
 
-outputname = 'rank'+str(rank)+'_threeway.txt'
-badwordname = 'rank'+str(rank)+'_threeway_bad.txt'
+outputname = 'rank'+str(rank)+'gvg.txt'
+badwordname = 'rank'+str(rank)+'_bad.txt'
 
 ######
 outfile = open(outputname,'a')
@@ -51,7 +51,7 @@ while True:
             sys.stdout.flush()
             continue
         try:
-            heegaard_yes = virtuallygeometric.is_orientably_geometric([w.alpha()])
+            heegaard_yes = virtuallygeometric.is_orientably_geometric([w])
         except RuntimeError:
             heegaard_yes = False
         if heegaard_yes:
@@ -60,7 +60,7 @@ while True:
             sys.stdout.flush()
             continue
         try:
-            if virtuallygeoemtric.is_virtually_geometric(F,[w]):
+            if virtuallygeometric.is_virtually_geometric(F,[w]):
                 vg+=1
             else:
                 not_vg+=1
