@@ -15,6 +15,13 @@ $ ./vg.py aabbccacb
 False
 ```
 
+Test if things are working correctly by running python27 and doing the following, which takes several known examples, twists them by a random automorphism of the free group, and then checks that the program still gives the expected answer.
+```
+>>> import freegroups.whiteheadgraph.test.virtuallygeometric as test
+>>> test.testall(randomautomorphismlength=10)
+Found expected virtual geometricity in all examples.
+```
+
 The folder VirtualGeometricityisRare contains scripts for recreating the raw data and graphs from the paper:
 Virtual geometricity is rare, Cashen and Manning,
 LMS Journal of Computation and Mathematics, 18 (2015), no. 1, 444–455.
