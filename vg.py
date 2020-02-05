@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python2
 
 ## usage:  ./vg.py word1, word2, ...
 ## decide if wordlist is virtually geometric

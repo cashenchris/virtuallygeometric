@@ -6,7 +6,6 @@ from numpy import sqrt
 from group import *
 import networkx as nx
 import itertools
-import pylab
 from numpy import prod
 #from fish import ProgressFish
 
@@ -809,27 +808,7 @@ class StallingsGraph(nx.MultiDiGraph):
         vertsinthecore=set(simplecoregraph.nodes())
         self.remove_nodes_from([v for v in self if v not in vertsinthecore])
 
-    def draw(self):
-        # Note: Networkx draws all edges as straight lines. This doesn't work so well for multieges or loops.
-        # To avoind this problem we subdivide edges and label the mid-edge vertex with the edgelabel.
-        positivegraph=nx.MultiDiGraph()
-        labels=dict()
-        for v in self.nodes_iter():
-            positivegraph.add_node(v)
-            labels[v]=v
-        for e in self.edges_iter(data=True):
-            if e[2]['superlabel']>0:
-                positivegraph.add_edge(e[0],(e[0],e[1],e[2]['superlabel']))
-                positivegraph.add_edge((e[0],e[1],e[2]['superlabel']),e[1])
-                labels[(e[0],e[1],e[2]['superlabel'])]=e[2]['superlabel']
-        pylab.figure(1)
-        pos=nx.spring_layout(positivegraph)
-        nx.draw_networkx_nodes(positivegraph,pos,self.nodes())
-        nx.draw_networkx_nodes(positivegraph,pos,set(positivegraph.nodes())-set(self.nodes()),node_color='w')
-        nx.draw_networkx_labels(positivegraph,pos,labels)
-        nx.draw_networkx_edges(positivegraph,pos)
-        #edge_labels=dict([((u,v),d['superlabel']) for u,v,d in positivegraph.edges(data=True)])
-        #nx.draw_networkx_edge_labels(positivegraph,pos,edge_labels=edge_labels)
+   
         
 def unfolded(theSG):
     "Return key for vertex which is not folded "
